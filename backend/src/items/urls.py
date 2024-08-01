@@ -13,7 +13,7 @@ router = APIRouter(
 @router.get("/", response_model=list[Item])
 async def get_items(*, session: AsyncSession = Depends(get_session)):
     result = await session.exec(select(Item))
-    items = result.scalars().all()
+    items = result.all()
     return items
 
 
